@@ -1,0 +1,175 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="projects" ng-controller="projectsCtrl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МАЙСТЕРНЯ ІДЕЙ | IDEA MASTERS</title>
+   
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/jquery.fullPage.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.css">
+    
+    
+  </head>
+  <body>
+    <div id="preloader">
+      <div id="pre-logo">
+        <div class="container">
+          <div class="logo-wrapper">
+          <img class="front" src="assets/img/IM_logo_U_w.svg" alt="">
+          <img class="back" src="assets/img/IM_logo_E_w.svg" alt="">
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fullpage">
+      <!-- HOME  -->
+      <div class="section home">
+        <div class="expanded row ">
+          
+          <div class="small-9 medium-6 large-4 xxlarge-3 column small-centered logo">
+            <div class="container">
+              <div class="logo-wrapper">
+              <img class="front" src="assets/img/IM_logo_U_w.svg" alt="">
+              <img class="back" src="assets/img/IM_logo_E_w.svg" alt="">
+              
+               
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="slide hero-arch" >
+          <h1 class="white text-center uppercase">архітектура</h1>
+          <h5 class="white text-center">тут треба щось прикольне написати про то, яку афігітєльну архітектуру ми проектуємо, і що найголовніше, реалізовуємо</h5>
+        </div>
+        <div class="slide hero-public">
+          <h1 class="white text-center uppercase">громадський простір</h1>
+          <h5 class="white text-center">тут треба щось прикольне написати про то, які афігітєльні публічні інтер’єри ми проектуємо, і що найголовніше, реалізовуємо</h5>
+        </div>
+        <div class="slide hero-private">
+          <h1 class="white text-center uppercase">приватний простір</h1>
+          <h5 class="white text-center">тут треба щось прикольне написати про то, які афігітєльні приватні інтер’єри ми проектуємо, і що найголовніше, реалізовуємо</h5>
+        </div>
+      </div>
+      <!-- PORTFOLIO -->
+      <div id="portfolio" class="section " >
+        <h2 class="text-center uppercase">реалізовані проекти</h2>
+        <div>
+          <!-- REVEAL -->
+          <div class="reveal full" id="viewProject" data-reveal data-animation-in="slide-in-right" data-animation-out="slide-out-right">
+            <div class="owl-carousel owl-theme">  
+            
+            
+             <div ng-repeat="image in activeProjectImage" class="full-image"
+             style="background-image: url(assets/img/projects/{[{activeProject.id}]}/{[{image}]}.jpg)"> 
+             </div>
+            </div>
+              <h5 class="white project-title show-for-medium">{[{activeProject.title}]}</h5>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- END OF REVEAL -->
+          <!--       <h3>{[{activeProject}]}</h3>
+          -->
+          <div id="menu" class="expanded row ">
+            <div class="menu-centered">
+              <ul class="menu text-center">
+                <li><a ng-click="sort('')" >все</a></li>
+                <li><a ng-click="sort('arch')" >архітектура</a></li>
+                <li><a ng-click="sort('public')" >громадський простір</a></li>
+                <li><a ng-click="sort('private')" >приватний простір</a></li>
+                <li><a ng-click="sort('object')" >предметний дизайн</a></li>
+              </ul></div>
+            </div>
+            <div class="expanded row small-up-1 medium-up-2 large-up-3 xxlarge-up-4 small-collapse" >
+              <div ng-repeat="project in projects | filter:{'cat':sortKey}" class="column fade project-thumb">
+                <img src="assets/img/projects/{[{project.id}]}/01.jpg" alt="">
+                <div class="hover-overlay"></div>
+                <h4 class="white">{[{project.title}]}</h4>
+                <p class="white">{[{project.descr}]}</p>
+                <a ng-click="projectId(projects.indexOf(project))" data-open="viewProject"> </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ABOUT US -->
+        <div class="section">
+          <h1 class="white text-center uppercase">про нас</h1>
+          
+        </div>
+        <!-- FOOTER -->
+        <div class="section fp-auto-height">
+          <div class="expanded row small-collapse">
+            <div class="column medium-7 large-9">
+              <div id="google-map" style="width:100%;height:480px; "></div><br>
+            </div>
+            <div class="column medium-5 large-3">
+              <h3 class="white text-center uppercase">контакти</h3>
+              <div class="small-8 column small-centered" style="opacity: 0.64;">
+                <div class="container">
+                  <div class="logo-wrapper">
+                  <img class="front" src="assets/img/IM_logo_U_w.svg" alt="">
+                  <img class="back" src="assets/img/IM_logo_E_w.svg" alt="">
+                  
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section fp-auto-height">
+        <p class="text-center white" style="margin-top: 16px;">© всі права застережено</p>
+        </div>
+      </div>
+      <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAfuN7UgfDB2RfqBeNIZ1S_rpZ6HU-GKYU"></script>
+      <script>
+      var myCenter=new google.maps.LatLng(49.818738, 24.019287);
+      var myPin='assets/img/map-pin.png';
+      function initialize()
+      {
+      var mapProp = {
+      zoomControl: true,
+      scrollwheel: false,
+      center:myCenter,
+      zoom:15,
+      disableDefaultUI: true,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var mapLviv=new google.maps.Map(document.getElementById("google-map"),mapProp);
+      var myMarker=new google.maps.Marker({
+      position: myCenter,
+      icon: myPin,
+      map: mapLviv,
+      title: 'вул. Стрийська, 86'
+      });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
+
+    <script src="assets/js/app.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="assets/js_plugins/myAngular.js"></script>
+<script src="assets/js_plugins/angular-animate.js"></script>
+
+
+<script src="assets/js_plugins/owl.carousel.min.js"></script>
+<script src="assets/js_plugins/jquery.mousewheel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
+
+<!-- <script src="assets/js_plugins/vendor/scrolloverflow.min.js"></script>
+<script src="assets/js_plugins/jquery.fullpage.extensions.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.3/jquery.fullpage.min.js"></script>
+
+
+  </body>
+</html>
