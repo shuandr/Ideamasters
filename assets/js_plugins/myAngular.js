@@ -18,7 +18,35 @@ app.config(function($interpolateProvider) {
 });
 */
 
+app.directive('owl-item', [function() {
+    return {
+        restrict: 'A',
+        //transclude: false,
+        link: function(scope, element) {
+            // wait for the last item in the ng-repeat then call init
+            if (scope.$last) {
 
+                var owl = $(element.parent()).owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    autoplay: false,
+                    dots: true,
+                    items: 1,
+                    lazyLoad: true,
+                });
+
+                /*owl.on('mousewheel', '.owl-stage', function(e) {
+                    if (e.deltaY > 0) {
+                        owl.trigger('next.owl');
+                    } else {
+                        owl.trigger('prev.owl');
+                    }
+                    e.preventDefault();
+                });*/
+            }
+        }
+    };
+}]);
 
 app.controller('projectsCtrl', function($scope, $http) {
 
@@ -29,6 +57,7 @@ app.controller('projectsCtrl', function($scope, $http) {
 
         $scope.activeProjectImage = $scope.activeProject.img;
 
+
     });
 
 
@@ -37,51 +66,11 @@ app.controller('projectsCtrl', function($scope, $http) {
         $scope.sortKey = keyname; //set the sortKey to the param passed
     };
 
-    $scope.projectId = function(key) { 
-        $scope.activeProject = $scope.projects[key];     //debugger;
+    $scope.projectId = function(key) {
+        $scope.activeProject = $scope.projects[key]; //debugger;
+    };
 
-
-    }; 
-
-         // alert($scope.projectId);
-
-
-    // $scope.projectId = '101';
-
-    /* $scope.activeProject = function() {
-         var myArray = $scope.projects;
-         var nameKey = $scope.projectId;
-
-         for (var i = 0; i < myArray.length; i++) {
-             if (myArray[i].id == nameKey) {
-                 return myArray[i];
-             }
-         };
-
-         alert($scope.projectId);
-     };
-
-     */
-
-
-
-    /*function search(nameKey, myArray) {
-            for (var i = 0; i < myArray.length; i++) {
-                if (myArray[i].id == nameKey) {
-                    return myArray[i];
-                }
-            }
-        }
-        var array = $scope.projects;
-        $scope.activeProject = search($scope.projectId, array);
-        alert($scope.projectId);
-    */
-    // angular.toJson($scope.activeProject)
-
-
-
-    // debugger;
-
-
+    // alert($scope.projectId);
 
 });
+

@@ -76,18 +76,22 @@
             </button>
           </div>
           <!-- END OF REVEAL -->
-          <!--       <h3>{[{activeProject}]}</h3>
-          -->
-          <div id="menu" class="expanded row ">
-            <div class="menu-centered">
-              <ul class="vertical medium-horizontal menu text-center">
-                <li><a ng-click="sort('')" >все</a></li>
-                <li><a ng-click="sort('arch')" >архітектура</a></li>
-                <li><a ng-click="sort('public')" >громадський простір</a></li>
-                <li><a ng-click="sort('private')" >приватний простір</a></li>
-                <li><a ng-click="sort('object')" >предметний дизайн</a></li>
-              </ul></div>
-            </div>
+          <div class="title-bar text-center" data-responsive-toggle="menu" data-hide-for="medium">
+          <!--         <button class="menu-icon" type="button" data-toggle="menu"></button>
+           -->        <h5 class="title-bar-title uppercase" data-toggle="menu">за категоріями</h5>
+                </div>
+                
+                <div id="menu"  class="expanded row">
+                  <div class="menu-centered" data-toggle="menu">
+                    <ul class="vertical medium-horizontal menu text-center" data-animate="slide-in-down slide-out-up">
+                      <li><a ng-click="sort('')" >все</a></li>
+                      <li><a ng-click="sort('arch')" >архітектура</a></li>
+                      <li><a ng-click="sort('public')" >громадський простір</a></li>
+                      <li><a ng-click="sort('private')" >приватний простір</a></li>
+                      <li><a ng-click="sort('object')" >предметний дизайн</a></li>
+                    </ul></div>
+                  </div>
+          
             <div class="expanded row small-up-1 medium-up-2 large-up-3 xxlarge-up-4 small-collapse" >
               <div ng-repeat="project in projects | filter:{'cat':sortKey}" class="column fade project-thumb">
                 <img src="assets/img/projects/{[{project.id}]}/01.jpg" alt="">
@@ -127,7 +131,7 @@
           </div>
         </div>
         <div class="section fp-auto-height">
-        <p class="text-center white" style="margin-top: 16px;">© всі права застережено</p>
+          <p class="text-center white" style="margin-top: 16px;">© всі права застережено</p>
         </div>
       </div>
       <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAfuN7UgfDB2RfqBeNIZ1S_rpZ6HU-GKYU"></script>
